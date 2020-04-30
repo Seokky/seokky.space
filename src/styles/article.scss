@@ -1,0 +1,41 @@
+.article {
+  &__header {
+    background-color: rgba(black, 0.1);
+  }
+
+  &__body {
+
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  &__date {
+    opacity: 0.85;
+  }
+
+  &__author {
+    opacity: 0.85;
+  }
+
+  &__subtitle {
+    font-weight: bold;
+  }
+
+  &__paragraph {
+    line-height: 120%;
+  }
+
+  &__quote {
+    padding: 10px;
+  }
+
+  &__attention {
+    display: inline-block;
+    background: orange;
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+}
