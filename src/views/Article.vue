@@ -4,22 +4,23 @@
     class="article"
   >
     <ArticleHeader
-      :title="article.title"
-      :date="article.date"
-      :author="article.author"
+      :title="meta.title"
+      :date="meta.date"
+      :author="meta.author"
     />
 
-    <ArticleBody :article-parts="articleParts" />
+    <ArticleBody :html="html" />
   </article>
 </template>
 
 <script>
+import Vue from 'vue';
 import articleRepository from '@/articleRepository';
 import imageRepository from '@/imageRepository';
 import ArticleBody from '@/components/article/Body.vue';
 import ArticleHeader from '@/components/article/Header.vue';
 
-export default {
+export default Vue.extend({
   components: {
     ArticleBody,
     ArticleHeader,
@@ -27,7 +28,13 @@ export default {
 
   data() {
     return {
+      meta: {
+        title: '',
+        date: '',
+        author: '',
+      },
       article: null,
+      html: '',
       articleParts: [],
     };
   },
@@ -41,64 +48,47 @@ export default {
   async mounted() {
     this.article = await articleRepository.get(+this.id);
 
-    if (this.article) {
-      this.parseArticle();
-    } else {
-      this.$router.replace({ name: '404' });
-    }
+    this.$nextTick(() => {
+      if (this.article) {
+        this.getArticleMeta();
+        this.getHtml();
+        this.replaceImageSources();
+      } else {
+        this.$router.replace({ name: '404' });
+      }
+    });
   },
 
   methods: {
-    parseArticle() {
-      this.article.content.forEach((el, idx) => {
-        const passage = this.article.content[idx];
-        const result = [];
+    getArticleMeta() {
+      let header = this.article.split('</header>')[0];
+      header = header.replace('<header ', '');
+      header = header.slice(0, -1);
 
-        Object.keys(passage).forEach(async (key) => {
-          if (key === 'subtitle') {
-            result.push({
-              type: 'subtitle',
-              content: passage[key],
-            });
-          }
+      const [rawTitle, rawDate, rawAuthor] = header.match(/\w+="(\w|\d|\s|\.)+"/g);
 
-          if (key === 'paragraph') {
-            result.push({
-              type: 'paragraph',
-              content: passage[key],
-            });
-          }
+      this.meta.title = rawTitle.match(/".+"/)[0].replace(/"/g, '');
+      this.meta.date = rawDate.match(/".+"/)[0].replace(/"/g, '');
+      this.meta.author = rawAuthor.match(/".+"/)[0].replace(/"/g, '');
+    },
 
-          if (key === 'quote') {
-            result.push({
-              type: 'quote',
-              content: passage[key],
-            });
-          }
+    getHtml() {
+      /* eslint-disable-next-line */
+      this.html = this.article.split('</header>')[1];
+    },
 
-          if (key === 'attention') {
-            result.push({
-              type: 'attention',
-              content: passage[key],
-            });
-          }
-
-          if (key === 'image') {
-            const imageName = passage[key].name;
-            const image = await imageRepository.get(imageName);
-            result.push({
-              type: 'image',
-              src: image,
-              maxWidth: passage[key].maxWidth || 'none',
-            });
-          }
-        });
-
-        this.articleParts.push(result);
+    replaceImageSources() {
+      this.$nextTick(async () => {
+        const img = document.getElementsByClassName('article__image')[0];
+        const src = await imageRepository.get(
+          img.getAttribute('data-name'),
+        );
+        img.setAttribute('src', src);
+        img.removeAttribute('data-name');
       });
     },
   },
-};
+});
 </script>
 
 <style lang="scss">
