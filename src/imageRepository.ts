@@ -1,13 +1,12 @@
 const images = {
   pistachio: import('@/assets/pistachio.png'),
   logo: import('@/assets/logo.png'),
-} as { [name in ImageName]: Promise<any> };
+} as { [name: string]: Promise<any> };
 
-async function get(name: ImageName) {
+async function get(name: string): Promise<string> {
   const image = await images[name];
-  return image.default;
-}
 
-type ImageName = 'pistachio' | 'logo';
+  return image ? image.default : '';
+}
 
 export default { get };

@@ -1,6 +1,6 @@
 <template>
   <article
-    v-if="article"
+    v-if="!loading"
     class="article"
   >
     <ArticleHeader
@@ -9,11 +9,11 @@
       :author="meta.author"
     />
 
-    <ArticleBody :html="html" />
+    <ArticleBody :html="bodyHTML" />
   </article>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import articleRepository from '@/articleRepository';
 import imageRepository from '@/imageRepository';
@@ -33,57 +33,81 @@ export default Vue.extend({
         date: '',
         author: '',
       },
-      article: null,
-      html: '',
-      articleParts: [],
+      bodyHTML: '',
+      loading: true,
     };
   },
 
   computed: {
     id() {
-      return this.$route.params.id;
+      return Number(this.$route.params.id);
     },
   },
 
   async mounted() {
-    this.article = await articleRepository.get(+this.id);
+    const articleHTML = await articleRepository.get(this.id);
+
+    if (!articleHTML) {
+      this.$router.replace({ name: '404' });
+    }
 
     this.$nextTick(() => {
-      if (this.article) {
-        this.getArticleMeta();
-        this.getHtml();
-        this.replaceImageSources();
-      } else {
-        this.$router.replace({ name: '404' });
-      }
+      this.setArticleMeta(articleHTML as string);
+      this.setArticleBodyHtml(articleHTML as string);
+      this.unsetLoading();
+      this.$nextTick(this.replaceImageSources);
     });
   },
 
   methods: {
-    getArticleMeta() {
-      let header = this.article.split('</header>')[0];
-      header = header.replace('<header ', '');
-      header = header.slice(0, -1);
-
-      const [rawTitle, rawDate, rawAuthor] = header.match(/\w+="(\w|\d|\s|\.)+"/g);
-
-      this.meta.title = rawTitle.match(/".+"/)[0].replace(/"/g, '');
-      this.meta.date = rawDate.match(/".+"/)[0].replace(/"/g, '');
-      this.meta.author = rawAuthor.match(/".+"/)[0].replace(/"/g, '');
+    unsetLoading() {
+      this.loading = false;
     },
 
-    getHtml() {
+    setArticleMeta(articleHtml: string) {
+      const header = articleHtml
+        .split('</header>')[0]
+        .replace('<header ', '')
+        .slice(0, -1);
+
+      const headerMatches = header.match(/\w+="(\w|\d|\s|\.)+"/g);
+
+      if (!headerMatches || headerMatches.length !== 3) {
+        throw new Error('Invalid article header');
+      }
+
+      const [rawTitle, rawDate, rawAuthor] = headerMatches;
+      const matchRe = /".+"/;
+      const replpaceRe = /"/g;
+
+      this.meta.title = rawTitle.match(matchRe)![0].replace(replpaceRe, '');
+      this.meta.date = rawDate.match(matchRe)![0].replace(replpaceRe, '');
+      this.meta.author = rawAuthor.match(matchRe)![0].replace(replpaceRe, '');
+    },
+
+    setArticleBodyHtml(articleHtml: string) {
       /* eslint-disable-next-line */
-      this.html = this.article.split('</header>')[1];
+      this.bodyHTML = articleHtml.split('</header>')[1];
     },
 
     replaceImageSources() {
-      this.$nextTick(async () => {
-        const img = document.getElementsByClassName('article__image')[0];
-        const src = await imageRepository.get(
-          img.getAttribute('data-name'),
-        );
-        img.setAttribute('src', src);
+      const images = Array.from(
+        document.getElementsByClassName('article__image'),
+      );
+
+      images.forEach(async (img) => {
+        if (!img.hasAttribute('data-name')) {
+          throw new Error('Article image do not have \'data-name\' attribute');
+        }
+
+        const imgName = img.getAttribute('data-name') as string;
+        const imgSrc = await imageRepository.get(imgName);
+
+        if (!imgSrc) {
+          throw new Error(`Invalid article image name: ${imgName}`);
+        }
+
+        img.setAttribute('src', imgSrc);
         img.removeAttribute('data-name');
       });
     },

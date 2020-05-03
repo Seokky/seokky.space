@@ -24,3 +24,4 @@ just paragraph
 ```
 
 <img data-name="pistachio" style="max-width: 150px">
+<img data-name="pistachio" style="max-width: 250px">
