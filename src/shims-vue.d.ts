@@ -4,6 +4,8 @@ declare module '*.vue' {
   export default Vue;
 }
 
+declare module '*.webp' {}
+
 declare module '*.png' {}
 
 declare module '*.md' {}

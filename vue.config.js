@@ -2,6 +2,10 @@
 const path = require('path');
 
 module.exports = {
+  publicPath: '/',
+
+  productionSourceMap: false,
+
   devServer: {
     overlay: false,
   },
@@ -13,6 +17,7 @@ module.exports = {
   },
 
   chainWebpack: (config) => {
+    config.plugins.delete('prefetch')
     config.module
       .rule('md')
       .test(/\.md$/)

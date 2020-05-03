@@ -1,11 +1,11 @@
-<template>
+<template functional>
   <section class="banner">
     <h1 class="banner__position">
       Frontend-разработчик
 
       <h2 class="banner__nickname">
         <a
-          class="banner__link"
+          class="banner__tg-link"
           target="_blank"
           href="https://t.me/seokky"
           title="Telegram"
@@ -41,7 +41,7 @@
     }
   }
 
-  &__link {
+  &__tg-link {
     font-size: 24px;
     color: black;
     opacity: 0.5;
