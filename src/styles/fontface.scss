@@ -4,5 +4,14 @@
     url('~@/assets/fonts/RobotoSlab-SemiBold.woff2') format('woff2'),
     url('~@/assets/fonts/RobotoSlab-SemiBold.woff') format('woff');
   font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  src:
+    url('~@/assets/fonts/RobotoSlab-Regular.woff2') format('woff2'),
+    url('~@/assets/fonts/RobotoSlab-Regular.woff') format('woff');
+  font-style: normal;
   font-weight: normal;
 }
