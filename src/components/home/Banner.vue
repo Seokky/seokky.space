@@ -33,6 +33,10 @@
     text-align: center;
 
     @media screen and (min-width: 768px) {
+      font-size: 46px;
+    }
+
+    @media screen and (min-width: 1024px) {
       font-size: 54px;
     }
   }
@@ -45,6 +49,10 @@
     padding: 0 10px;
 
     @media screen and (min-width: 768px) {
+      font-size: 32px;
+    }
+
+    @media screen and (min-width: 1024px) {
       font-size: 36px;
     }
 

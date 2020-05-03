@@ -63,6 +63,11 @@
       width: 50%;
       margin-left: 50%;
       margin-bottom: 50px;
+      font-size: 32px;
+      line-height: 43px;
+    }
+
+    @media screen and (min-width: 1024px) {
       font-size: 36px;
       line-height: 47px;
     }
@@ -76,6 +81,12 @@
       text-decoration: line-through;
 
       @media screen and (min-width: 768px) {
+        left: -280px;
+        top: 0;
+        font-size: inherit;
+      }
+
+      @media screen and (min-width: 1024px) {
         left: -310px;
         top: 0;
         font-size: inherit;
@@ -90,6 +101,10 @@
     margin-bottom: 25px;
 
     @media screen and (min-width: 768px) {
+      font-size: 22px;
+    }
+
+    @media screen and (min-width: 1024px) {
       font-size: 24px;
     }
   }

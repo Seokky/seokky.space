@@ -66,6 +66,11 @@ export default Vue.extend({
       width: 50%;
       margin-left: 50%;
       margin-bottom: 50px;
+      font-size: 32px;
+      line-height: 43px;
+    }
+
+    @media screen and (min-width: 1024px) {
       font-size: 36px;
       line-height: 47px;
     }
