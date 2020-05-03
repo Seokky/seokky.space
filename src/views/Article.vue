@@ -3,20 +3,20 @@
     v-if="!loading"
     class="article"
   >
-    <ArticleHeader
-      :title="meta.title"
-      :date="meta.date"
-      :author="meta.author"
-    />
-
+    <ArticleHeader :data="meta" />
     <ArticleBody :html="bodyHTML" />
   </article>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import { ArticleMeta } from '@/types/ArticleMeta';
+
 import articleRepository from '@/articleRepository';
 import imageRepository from '@/imageRepository';
+
+import ArticleParser from '@/classes/ArticleParser';
+
 import ArticleBody from '@/components/article/Body.vue';
 import ArticleHeader from '@/components/article/Header.vue';
 
@@ -32,9 +32,10 @@ export default Vue.extend({
         title: '',
         date: '',
         author: '',
-      },
+      } as ArticleMeta,
       bodyHTML: '',
       loading: true,
+      articleParser: null as null | ArticleParser,
     };
   },
 
@@ -49,11 +50,14 @@ export default Vue.extend({
 
     if (!articleHTML) {
       this.$router.replace({ name: '404' });
+      return;
     }
 
+    this.articleParser = new ArticleParser(articleHTML);
+
     this.$nextTick(() => {
-      this.setArticleMeta(articleHTML as string);
-      this.setArticleBodyHtml(articleHTML as string);
+      this.setArticleMeta();
+      this.setArticleBodyHtml();
       this.unsetLoading();
       this.$nextTick(this.replaceImageSources);
     });
@@ -64,52 +68,32 @@ export default Vue.extend({
       this.loading = false;
     },
 
-    setArticleMeta(articleHtml: string) {
-      const header = articleHtml
-        .split('</header>')[0]
-        .replace('<header ', '')
-        .slice(0, -1);
-
-      const headerMatches = header.match(/\w+="(\w|\d|\s|\.)+"/g);
-
-      if (!headerMatches || headerMatches.length !== 3) {
-        throw new Error('Invalid article header');
-      }
-
-      const [rawTitle, rawDate, rawAuthor] = headerMatches;
-      const matchRe = /".+"/;
-      const replpaceRe = /"/g;
-
-      this.meta.title = rawTitle.match(matchRe)![0].replace(replpaceRe, '');
-      this.meta.date = rawDate.match(matchRe)![0].replace(replpaceRe, '');
-      this.meta.author = rawAuthor.match(matchRe)![0].replace(replpaceRe, '');
+    setArticleMeta() {
+      this.meta = this.articleParser!.getMeta();
     },
 
-    setArticleBodyHtml(articleHtml: string) {
-      /* eslint-disable-next-line */
-      this.bodyHTML = articleHtml.split('</header>')[1];
+    setArticleBodyHtml() {
+      this.bodyHTML = this.articleParser!.getBody();
     },
 
     replaceImageSources() {
-      const images = Array.from(
-        document.getElementsByClassName('article__image'),
-      );
+      this.articleParser!
+        .getImages()
+        .forEach(async (img) => {
+          if (!img.hasAttribute('data-name')) {
+            throw new Error('Article image do not have \'data-name\' attribute');
+          }
 
-      images.forEach(async (img) => {
-        if (!img.hasAttribute('data-name')) {
-          throw new Error('Article image do not have \'data-name\' attribute');
-        }
+          const imgName = img.getAttribute('data-name') as string;
+          const imgSrc = await imageRepository.get(imgName);
 
-        const imgName = img.getAttribute('data-name') as string;
-        const imgSrc = await imageRepository.get(imgName);
+          if (!imgSrc) {
+            throw new Error(`Invalid article image name: ${imgName}`);
+          }
 
-        if (!imgSrc) {
-          throw new Error(`Invalid article image name: ${imgName}`);
-        }
-
-        img.setAttribute('src', imgSrc);
-        img.removeAttribute('data-name');
-      });
+          img.setAttribute('src', imgSrc);
+          img.removeAttribute('data-name');
+        });
     },
   },
 });

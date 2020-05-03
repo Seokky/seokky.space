@@ -2,34 +2,27 @@
   <header class="article__header">
     <h1
       class="article__title"
-      v-text="props.title"
+      v-text="props.data.title"
     />
     <span
       class="article__date"
-      v-text="props.date"
+      v-text="props.data.date"
     /> &nbsp;
     <span
       class="article__author"
-      v-text="props.author"
+      v-text="props.data.author"
     />
   </header>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import { ArticleMeta } from '@/types/ArticleMeta';
 
 export default Vue.extend({
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    date: {
-      type: String,
-      required: true,
-    },
-    author: {
-      type: String,
+    data: {
+      type: Object as () => ArticleMeta,
       required: true,
     },
   },
