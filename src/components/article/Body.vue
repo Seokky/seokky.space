@@ -1,6 +1,6 @@
 <template functional>
   <section
-    class="article__body"
+    class="article__body article-block"
     v-html="props.html"
   />
 </template>

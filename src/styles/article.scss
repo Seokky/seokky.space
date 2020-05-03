@@ -1,6 +1,11 @@
+@import '@/styles/vars.scss';
+
 .article {
+  background-color: #FFFFFC;
+
   &__header {
-    background-color: rgba(black, 0.1);
+    padding-top: 30px;
+    padding-bottom: 20px;
   }
 
   &__body {
@@ -8,28 +13,39 @@
   }
 
   &__title {
+    font-family: $titleFont;
     font-weight: bold;
     font-size: 22px;
-  }
-
-  &__date {
-    opacity: 0.85;
-  }
-
-  &__author {
-    opacity: 0.85;
+    margin-bottom: 15px;
   }
 
   &__subtitle {
+    font-family: $titleFont;
     font-weight: bold;
+    font-size: 18px;
+    margin: 15px 0;
+  }
+
+  &__date,
+  &__author {
+    font-size: 18px;
+    opacity: 0.85;
+  }
+
+  &__date {
+  }
+
+  &__author {
   }
 
   &__paragraph {
     line-height: 120%;
+    font-size: 18px;
   }
 
   &__list {
-
+    list-style: disc;
+    margin-left: 18px;
   }
 
   &__quote {
@@ -38,6 +54,6 @@
 
   &__image {
     display: block;
-    margin: 10px auto;
+    margin: 15px auto;
   }
 }

@@ -1,5 +1,5 @@
 <template functional>
-  <header class="article__header">
+  <header class="article__header article-block">
     <h1
       class="article__title"
       v-text="props.data.title"
