@@ -46,8 +46,6 @@
 @import '@/styles/vars.scss';
 
 .about {
-  margin-top: 60px;
-
   &__title {
     display: block;
     width: 60%;

@@ -61,10 +61,16 @@
 
     <div class="skills__other">
       <div class="skills__item">
-        Unit Tests
+        SOLID
+      </div>
+      <div class="skills__item">
+        Design Patterns
       </div>
       <div class="skills__item">
         ООП
+      </div>
+      <div class="skills__item">
+        Unit Tests
       </div>
       <div class="skills__item">
         Git
@@ -74,12 +80,6 @@
       </div>
       <div class="skills__item">
         i18n
-      </div>
-      <div class="skills__item">
-        SOLID
-      </div>
-      <div class="skills__item">
-        Design Patterns
       </div>
     </div>
   </section>
@@ -91,8 +91,6 @@
 $lines-color: rgba(gray, 0.25);
 
 .skills {
-  margin-top: 60px;
-
   &__title {
     display: block;
     width: 60%;
@@ -140,6 +138,8 @@ $lines-color: rgba(gray, 0.25);
   }
 
   &__row {
+    max-width: 700px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     overflow: auto;
@@ -222,6 +222,8 @@ $lines-color: rgba(gray, 0.25);
   }
 
   &__other {
+    max-width: 700px;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
 

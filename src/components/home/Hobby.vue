@@ -29,8 +29,6 @@ export default Vue.extend({
 @import '@/styles/vars.scss';
 
 .hobby {
-  margin-top: 60px;
-
   &__title {
     display: block;
     width: 60%;
