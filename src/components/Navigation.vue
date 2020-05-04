@@ -75,6 +75,11 @@ export default Vue.extend({
     font-size: 18px;
     color: black;
 
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+
     &:nth-of-type(2) {
       margin: 0 10px;
     }

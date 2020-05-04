@@ -3,6 +3,8 @@
     <Banner />
     <About />
     <Experience />
+    <Hobby />
+    <Skills />
   </div>
 </template>
 
@@ -11,12 +13,16 @@ import Vue from 'vue';
 import Banner from '@/components/home/Banner.vue';
 import About from '@/components/home/About.vue';
 import Experience from '@/components/home/Experience.vue';
+import Hobby from '@/components/home/Hobby.vue';
+import Skills from '@/components/home/Skills.vue';
 
 export default Vue.extend({
   components: {
     Banner,
     About,
     Experience,
+    Hobby,
+    Skills,
   },
 });
 </script>
