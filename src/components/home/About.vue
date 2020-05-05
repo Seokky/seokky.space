@@ -31,34 +31,20 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import getDeclension from '@/utils/declension';
+import {
+  getAgeByBirthday,
+  getExperienceByStartDate,
+} from '@/utils/date-calculator';
 
 export default Vue.extend({
-  computed: {
-    age() {
-      const birthday = new Date('February 02, 1999');
-      const now = new Date();
-      const age = now.getFullYear() - birthday.getFullYear();
-      const ageDeclension = getDeclension(age, 'год', 'года', 'лет');
+  data: () => ({
+    age: '',
+    experience: '',
+  }),
 
-      return `${age} ${ageDeclension}`;
-    },
-    experience() {
-      const start = new Date('November 01, 2018');
-      const now = new Date();
-
-      const expSeconds = (+now - +start) / 1000;
-      const expDays = Math.round(expSeconds / 86400);
-      const expMonths = Math.ceil(expDays / 30);
-
-      const resultY = Math.floor(expMonths / 12);
-      const resultM = expMonths % 12;
-
-      const declensionY = getDeclension(resultY, 'год', 'года', 'лет');
-      const declensionM = getDeclension(resultM, 'месяц', 'месяца', 'месяцев');
-
-      return `${resultY} ${declensionY} ${resultM} ${declensionM}`;
-    },
+  mounted() {
+    this.age = getAgeByBirthday('February 02, 1999');
+    this.experience = getExperienceByStartDate('November 01, 2018');
   },
 });
 </script>
