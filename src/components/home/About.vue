@@ -12,7 +12,10 @@
       </li>
       <li class="about__item">
         <span class="about__label">Стаж:</span>
-        <span class="about__value">1 год 7 месяцев</span>
+        <span
+          class="about__value"
+          v-text="experience"
+        />
       </li>
       <li class="about__item">
         <span class="about__label"><strike>ЧСВ</strike> Позиция:</span>
@@ -28,6 +31,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import getDeclension from '@/utils/declension';
 
 export default Vue.extend({
   computed: {
@@ -35,14 +39,25 @@ export default Vue.extend({
       const birthday = new Date('February 02, 1999');
       const now = new Date();
       const age = now.getFullYear() - birthday.getFullYear();
+      const ageDeclension = getDeclension(age, 'год', 'года', 'лет');
 
-      return `${age} год`;
+      return `${age} ${ageDeclension}`;
     },
     experience() {
       const start = new Date('November 01, 2018');
       const now = new Date();
 
-      return now.getFullYear() - start.getFullYear();
+      const expSeconds = (+now - +start) / 1000;
+      const expDays = Math.round(expSeconds / 86400);
+      const expMonths = Math.ceil(expDays / 30);
+
+      const resultY = Math.floor(expMonths / 12);
+      const resultM = expMonths % 12;
+
+      const declensionY = getDeclension(resultY, 'год', 'года', 'лет');
+      const declensionM = getDeclension(resultM, 'месяц', 'месяца', 'месяцев');
+
+      return `${resultY} ${declensionY} ${resultM} ${declensionM}`;
     },
   },
 });

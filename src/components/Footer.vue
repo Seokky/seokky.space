@@ -24,7 +24,6 @@ export default Vue.extend({
   margin-top: 60px;
   padding-bottom: 40px;
   border-top: 1px solid rgba(black, 0.2);
-  background: rgba(black, 0.05);
 
   &__links {
     margin-top: 30px;
