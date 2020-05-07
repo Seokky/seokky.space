@@ -17,7 +17,7 @@ module.exports = {
   },
 
   chainWebpack: (config) => {
-    config.plugins.delete('prefetch')
+    // config.plugins.delete('prefetch')
     config.module
       .rule('md')
       .test(/\.md$/)

@@ -80,7 +80,7 @@ export default Vue.extend({
   &__item {
     display: inline-block;
     font-family: $commonFont;
-    font-size: 18px;
+    font-size: 19px;
     position: relative;
 
     @media screen and (min-width: 768px) {

@@ -37,8 +37,7 @@
     color: black;
     text-decoration: none;
     padding: 0 10px;
-
-      font-size: 18px;
+    font-size: 18px;
 
     &:hover {
       text-decoration: underline;

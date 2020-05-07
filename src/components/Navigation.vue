@@ -1,21 +1,21 @@
 <template>
   <nav class="navigation page-block">
     <router-link
-      to="/"
       class="navigation__item"
       active-class="navigation__item--active"
       title="Главная страница"
       exact
+      :to="{ name: 'Home' }"
     >
       Главная
     </router-link>
 
     <router-link
-      to="/articles/1"
       class="navigation__item"
       active-class="navigation__item--active"
       title="Мой типа-блог"
       exact
+      :to="{ name: 'Blog' }"
     >
       Блог
     </router-link>
@@ -72,7 +72,7 @@ export default Vue.extend({
     align-items: center;
     text-decoration: none;
     font-family: $commonFont;
-    font-size: 18px;
+    font-size: 20px;
     color: black;
 
     &:hover,
@@ -81,7 +81,7 @@ export default Vue.extend({
     }
 
     &:nth-of-type(2) {
-      margin: 0 10px;
+      margin: 0 15px;
     }
 
     &--active {

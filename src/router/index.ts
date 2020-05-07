@@ -16,6 +16,11 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "article" */ '@/views/Article.vue'),
   },
   {
+    path: '/blog',
+    name: 'Blog',
+    component: () => import(/* webpackChunkName: "blog" */ '@/views/Blog.vue'),
+  },
+  {
     path: '/not-found',
     name: '404',
     component: () => import(/* webpackChunkName: "notfound" */ '@/views/404.vue'),

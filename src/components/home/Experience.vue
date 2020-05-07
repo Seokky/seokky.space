@@ -1,29 +1,29 @@
 <template functional>
-  <section class="about page-block">
-    <span class="about__title">Опыт работы</span>
+  <section class="experience page-block">
+    <span class="experience__title">Опыт работы</span>
 
-    <ul class="about__list">
-      <li class="about__item">
-        <span class="about__label">* Все мы сначала фрилансили</span>
-        <span class="about__value">
+    <ul class="experience__list">
+      <li class="experience__item">
+        <span class="experience__label">* Все мы сначала фрилансили</span>
+        <span class="experience__value">
           Лендинги на заказ, личные сайты преподам,
           система тестирования для колледжа, приложуха
           для создания постов в инстаграм и прочий давнокод...
         </span>
       </li>
 
-      <li class="about__item">
-        <span class="about__label">* Но однажды пришлось повзрослеть</span>
-        <span class="about__value">
+      <li class="experience__item">
+        <span class="experience__label">* Но однажды пришлось повзрослеть</span>
+        <span class="experience__value">
           Первый неудачный опыт в маленькой веб-студии,
           бегающей от налогов; первая развилка с легким (CMS-ным)
           и TRUEдным путём; скитания, старания, <strike>страдания...</strike>
         </span>
       </li>
 
-      <li class="about__item">
-        <span class="about__label">* И вот он - первый серьёзный проект</span>
-        <span class="about__value">
+      <li class="experience__item">
+        <span class="experience__label">* И вот он - первый серьёзный проект</span>
+        <span class="experience__value">
           ПДО - портал персонифицированного доп. образования.
           Всероссийский, между прочим! Делаем SPA из фулстечного монстра на Yii,
           воюем с консерватизмом, не признающим понятие "качество кода",
@@ -31,9 +31,9 @@
         </span>
       </li>
 
-      <li class="about__item">
-        <span class="about__label">* Ethereum Blockchain, Face Recognition</span>
-        <span class="about__value">
+      <li class="experience__item">
+        <span class="experience__label">* Ethereum Blockchain, Face Recognition</span>
+        <span class="experience__value">
           AVATAR Lab - однозначно шаг вперёд. SCRUM, интенсивный обмен опытом,
           интересные проекты. Blockchain, TypeScript, Vue.js + Prerender - работаем!
         </span>
@@ -45,7 +45,13 @@
 <style lang="scss" scoped>
 @import '@/styles/vars.scss';
 
-.about {
+.experience {
+  padding-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 0;
+  }
+
   &__title {
     display: block;
     width: 60%;
@@ -95,7 +101,7 @@
   &__item {
     display: block;
     font-family: $commonFont;
-    font-size: 18px;
+    font-size: 19px;
     margin-bottom: 25px;
 
     @media screen and (min-width: 768px) {

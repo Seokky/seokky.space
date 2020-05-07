@@ -29,6 +29,12 @@ export default Vue.extend({
 @import '@/styles/vars.scss';
 
 .hobby {
+  padding-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 0;
+  }
+
   &__title {
     display: block;
     width: 60%;

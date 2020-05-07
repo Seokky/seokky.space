@@ -91,6 +91,12 @@
 $lines-color: rgba(gray, 0.25);
 
 .skills {
+  padding-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 0;
+  }
+
   &__title {
     display: block;
     width: 60%;
