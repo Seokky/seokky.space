@@ -18,7 +18,7 @@
     >GitHub</a>
 
     <router-link
-      to="/articles/1"
+      to="/blog"
       class="social__link"
       title="Мой типа-блог"
     >

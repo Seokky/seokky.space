@@ -58,7 +58,9 @@ export default Vue.extend({
     padding-right: 20px;
     padding-bottom: $underline-outer-space;
     margin-bottom: $underline-outer-space;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgba(black, 0.7);
+    position: relative;
+    bottom: -5px;
 
     @media screen and (min-width: 768px) {
       font-size: 24px;
@@ -89,10 +91,11 @@ export default Vue.extend({
   &__action-wrapper {
     display: flex;
     align-items: center;
+    margin-top: 15px;
   }
 
   &__action-link {
-    background-color: black;
+    background-color: rgba(black, 0.9);
     color: white;
     font-family: $commonFont;
     font-size: 20px;

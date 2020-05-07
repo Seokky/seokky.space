@@ -105,7 +105,7 @@ $lines-color: rgba(gray, 0.25);
     font-family: $titleFont;
     font-size: 22px;
     line-height: 120%;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.7);
     position: relative;
 
     @media screen and (min-width: 768px) {

@@ -24,8 +24,18 @@ export default Vue.extend({
 
 .blog-main {
   &__title {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 22px;
+    text-align: right;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.7);
+
+    @media screen and (min-width: 768px) {
+      font-size: 28px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 32px;
+    }
   }
 }
 </style>

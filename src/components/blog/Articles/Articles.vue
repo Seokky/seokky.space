@@ -37,9 +37,17 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .articles {
-  margin-top: 60px;
+  margin-top: 20px;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-top: 60px;
+  }
 }
 </style>
