@@ -1,4 +1,4 @@
-export type ArticleMeta = {
+export interface ArticleMeta {
   title: string;
   date: string;
   author: string;

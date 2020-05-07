@@ -39,7 +39,8 @@
     padding: 0 10px;
     font-size: 18px;
 
-    &:hover {
+    &:hover,
+    &:focus {
       text-decoration: underline;
     }
   }

@@ -14,7 +14,7 @@ export default class ArticleParser {
 
   getMeta() {
     const header = this.getHeader();
-    const metaItems = header.match(/\w+="(\w|\d|\s|[А-Яа-я]|\.)+"/g);
+    const metaItems = header.match(/\w+="(\w|\d|\s|[А-Яа-я]|\.|—|:|-)+"/g);
 
     if (!metaItems || metaItems.length !== 3) {
       throw new Error('Invalid article header');

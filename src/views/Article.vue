@@ -17,8 +17,8 @@ import imageRepository from '@/imageRepository';
 
 import ArticleParser from '@/classes/ArticleParser';
 
-import ArticleBody from '@/components/article/Body.vue';
-import ArticleHeader from '@/components/article/Header.vue';
+import ArticleBody from '@/components/blog/article/Body.vue';
+import ArticleHeader from '@/components/blog/article/Header.vue';
 
 export default Vue.extend({
   components: {

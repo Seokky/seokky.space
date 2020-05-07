@@ -62,9 +62,11 @@ export default Vue.extend({
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+  margin-bottom: 50px;
 
   @media screen and (min-width: 768px) {
     justify-content: flex-end;
+    margin-bottom: 60px;
   }
 
   &__item {
