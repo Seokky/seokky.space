@@ -1,5 +1,5 @@
 <template functional>
-  <section class="banner">
+  <header class="banner">
     <h1 class="banner__position">
       Frontend-разработчик
 
@@ -12,7 +12,7 @@
         >@seokky</a>
       </h2>
     </h1>
-  </section>
+  </header>
 </template>
 
 <style lang="scss" scoped>
@@ -31,6 +31,7 @@
     font-family: $titleFont;
     font-size: 36px;
     text-align: center;
+    padding: 0 15px;
 
     @media screen and (min-width: 768px) {
       font-size: 46px;

@@ -72,8 +72,12 @@ export default Vue.extend({
     align-items: center;
     text-decoration: none;
     font-family: $commonFont;
-    font-size: 20px;
+    font-size: 16px;
     color: black;
+
+    @media screen and (min-width: 370px) {
+      font-size: 20px;
+    }
 
     &:hover,
     &:focus {
