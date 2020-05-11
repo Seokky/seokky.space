@@ -1,4 +1,9 @@
-<header title="Пишем змейку на Vue.js без Canvas" description="Описание второй статьи" date="24.02.2020" author="Максим Новерин"></header>
+<header>
+  <title>Пишем змейку на Vue.js без Canvas</title>
+  <description>Описание первой статьи</description>
+  <date>24.02.2020</date>
+  <author>Максим Новерин</author>
+</header>
 
 ## Первый подзаголовок статьи
 

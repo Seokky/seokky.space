@@ -1,4 +1,9 @@
-<header title="Как Python фронтендеру в быту пригодился" description="Описание первой статьи" date="24.02.2020" author="Максим Новерин"></header>
+<header>
+  <title>Как Python фронтендеру в быту пригодился</title>
+  <description>Описание первой статьи</description>
+  <date>24.02.2020</date>
+  <author>Максим Новерин</author>
+</header>
 
 ## Первый подзаголовок статьи
 

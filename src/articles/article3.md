@@ -1,4 +1,9 @@
-<header title="Serverless — когда лень писать бэкенд" description="Описание третьей статьи" date="24.02.2020" author="Максим Новерин"></header>
+<header>
+  <title>Serverless — когда лень писать бэкенд</title>
+  <description>Описание первой статьи</description>
+  <date>24.02.2020</date>
+  <author>Максим Новерин</author>
+</header>
 
 ## Первый подзаголовок статьи
 

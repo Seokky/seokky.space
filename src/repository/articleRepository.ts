@@ -1,5 +1,5 @@
 import ArticleParser from '@/classes/ArticleParser';
-import { idsBySlug, slugsById } from '@/articles/slugs';
+import { idsBySlug, slugsById } from '@/articles/slugsHelper';
 import { ArticleMetaExtended } from '@/types/ArticleMetaExtended';
 
 const articles = {
