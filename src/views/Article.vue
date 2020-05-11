@@ -30,6 +30,7 @@ export default Vue.extend({
     return {
       meta: {
         title: '',
+        description: '',
         date: '',
         author: '',
       } as ArticleMeta,
@@ -45,19 +46,13 @@ export default Vue.extend({
     },
   },
 
-  async mounted() {
+  async created() {
     const articleHTML = await articleRepository.get(this.id);
-
-    if (!articleHTML) {
-      this.$router.replace({ name: '404' });
-      return;
-    }
-
     this.articleParser = new ArticleParser(articleHTML);
 
     this.$nextTick(() => {
-      this.setArticleMeta();
-      this.setArticleBodyHtml();
+      this.getArticleMeta();
+      this.getArticleBodyHtml();
       this.unsetLoading();
       this.$nextTick(this.replaceImageSources);
     });
@@ -68,12 +63,12 @@ export default Vue.extend({
       this.loading = false;
     },
 
-    setArticleMeta() {
-      this.meta = this.articleParser!.getMeta();
+    getArticleBodyHtml() {
+      this.bodyHTML = this.articleParser!.getBody();
     },
 
-    setArticleBodyHtml() {
-      this.bodyHTML = this.articleParser!.getBody();
+    getArticleMeta() {
+      this.meta = this.articleParser!.getMeta();
     },
 
     replaceImageSources() {

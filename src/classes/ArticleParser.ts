@@ -16,20 +16,23 @@ export default class ArticleParser {
     const header = this.getHeader();
     const metaItems = header.match(/\w+="(\w|\d|\s|[А-Яа-я]|\.|—|:|-)+"/g);
 
-    if (!metaItems || metaItems.length !== 3) {
+    if (!metaItems || metaItems.length !== 4) {
       throw new Error('Invalid article header');
     }
 
-    const [rawTitle, rawDate, rawAuthor] = metaItems;
+    const [rawTitle, rawDescription, rawDate, rawAuthor] = metaItems;
 
     const matchRe = /".+"/;
     const replpaceRe = /"/g;
 
     const title = rawTitle.match(matchRe)![0].replace(replpaceRe, '');
+    const description = rawDescription.match(matchRe)![0].replace(replpaceRe, '');
     const date = rawDate.match(matchRe)![0].replace(replpaceRe, '');
     const author = rawAuthor.match(matchRe)![0].replace(replpaceRe, '');
 
-    return { title, date, author };
+    return {
+      title, description, date, author,
+    };
   }
 
   getBody() {

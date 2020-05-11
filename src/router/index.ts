@@ -1,36 +1,38 @@
 import Vue from 'vue';
-import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import VueRouter from 'vue-router';
+import ArticleParser from '@/classes/ArticleParser';
+import articleRepository from '@/repository/articleRepository';
+import routes from './routes';
+import routerUtils from './utils';
 
 Vue.use(VueRouter);
-
-const routes: Array<RouteConfig> = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/articles/:id',
-    name: 'Article',
-    component: () => import(/* webpackChunkName: "article" */ '@/views/Article.vue'),
-  },
-  {
-    path: '/blog',
-    name: 'Blog',
-    component: () => import(/* webpackChunkName: "blog" */ '@/views/Blog.vue'),
-  },
-  {
-    path: '/not-found',
-    name: '404',
-    component: () => import(/* webpackChunkName: "notfound" */ '@/views/404.vue'),
-  },
-];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach(async (to, from, next) => {
+  if (to.name === 'Article') {
+    const articleHTML = await articleRepository.get(to.params.id);
+
+    if (!articleHTML) {
+      next({ name: '404' });
+      return;
+    }
+
+    const parser = new ArticleParser(articleHTML);
+    const meta = parser.getMeta();
+
+    routerUtils.setPageTitle(meta.title);
+    routerUtils.setPageDescription(meta.description);
+  } else {
+    routerUtils.setPageTitle(to.meta.title);
+    routerUtils.setPageDescription(to.meta.description);
+  }
+
+  next();
 });
 
 export default router;
