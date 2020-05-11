@@ -4,16 +4,19 @@
       href="https://t.me/seokky"
       target="_blank"
       class="social__link"
+      title="Telegram"
     >Telegram</a>
 
     <a
       href="mailto:noverin@yandex.ru"
       class="social__link"
+      title="Электронная почта"
     >Email</a>
 
     <a
       href="https://github.com/Seokky"
       target="_blank"
+      title="GitHub профиль"
       class="social__link"
     >GitHub</a>
 

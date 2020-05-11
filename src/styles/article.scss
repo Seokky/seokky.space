@@ -15,15 +15,33 @@
   &__title {
     font-family: $titleFont;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 24px;
+    line-height: 120%;
     margin-bottom: 15px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 26px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;
+    }
   }
 
   &__subtitle {
     font-family: $titleFont;
     font-weight: bold;
-    font-size: 18px;
-    margin: 15px 0;
+    font-size: 20px;
+    margin: 20px 0;
+    margin-bottom: 15px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 22px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 24px;
+    }
   }
 
   &__date,
@@ -33,6 +51,7 @@
   }
 
   &__date {
+    margin-right: 5px;
   }
 
   &__author {
@@ -46,14 +65,29 @@
   &__list {
     list-style: disc;
     margin-left: 18px;
+
+    &-item {
+      margin: 5px 0;
+      font-size: 18px;
+    }
   }
 
   &__quote {
     padding: 10px;
   }
 
+  &__pre {
+    background-color: whitesmoke;
+    padding: 10px 0;
+  }
+
+  &__code {
+    font-family: monospace;
+    font-size: 18px;
+  }
+
   &__image {
     display: block;
-    margin: 15px auto;
+    margin: 20px auto;
   }
 }

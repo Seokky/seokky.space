@@ -11,7 +11,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ArticleMetaWithId } from '@/types/ArticleMetaWithId';
-import articleRepository from '@/articleRepository';
+import articleRepository from '@/repository/articleRepository';
 import ArticlePreview from './Preview.vue';
 
 export default Vue.extend({

@@ -40,7 +40,7 @@ export default class ArticleParser {
   getImages() {
     return Array.from(
       document.getElementsByClassName('article__image'),
-    );
+    ) as HTMLElement[];
   }
   /* eslint-enable class-methods-use-this */
 }

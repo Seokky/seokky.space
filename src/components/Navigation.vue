@@ -64,7 +64,7 @@ export default Vue.extend({
   padding-top: 20px;
   margin-bottom: 50px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 500px) {
     justify-content: flex-end;
     margin-bottom: 60px;
   }

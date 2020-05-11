@@ -12,8 +12,8 @@
 import Vue from 'vue';
 import { ArticleMeta } from '@/types/ArticleMeta';
 
-import articleRepository from '@/articleRepository';
-import imageRepository from '@/imageRepository';
+import articleRepository from '@/repository/articleRepository';
+import imageRepository from '@/repository/imageRepository';
 
 import ArticleParser from '@/classes/ArticleParser';
 
@@ -79,21 +79,32 @@ export default Vue.extend({
     replaceImageSources() {
       this.articleParser!
         .getImages()
-        .forEach(async (img) => {
+        .forEach((img: HTMLElement) => {
           if (!img.hasAttribute('data-name')) {
             throw new Error('Article image do not have \'data-name\' attribute');
           }
 
-          const imgName = img.getAttribute('data-name') as string;
-          const imgSrc = await imageRepository.get(imgName);
+          const name = img.getAttribute('data-name') as string;
+          const { original, webp } = imageRepository.get(name);
 
-          if (!imgSrc) {
-            throw new Error(`Invalid article image name: ${imgName}`);
-          }
-
-          img.setAttribute('src', imgSrc);
+          this.wrapImageWithPicture(img, webp, original);
           img.removeAttribute('data-name');
         });
+    },
+
+    wrapImageWithPicture(img: HTMLElement, webpSrc: string, originalSrc: string) {
+      img.setAttribute('src', originalSrc);
+
+      const picture = document.createElement('picture');
+
+      if (webpSrc) {
+        const source = document.createElement('source');
+        source.setAttribute('srcset', webpSrc);
+        source.setAttribute('type', 'image/webp');
+        picture.appendChild(source);
+      }
+
+      (picture as any).wrap([img]);
     },
   },
 });
