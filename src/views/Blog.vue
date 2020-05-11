@@ -34,7 +34,8 @@ export default Vue.extend({
     }
 
     @media screen and (min-width: 1024px) {
-      font-size: 32px;
+      font-size: 36px;
+      padding-bottom: 6px;
     }
   }
 }

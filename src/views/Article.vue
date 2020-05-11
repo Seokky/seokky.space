@@ -40,14 +40,9 @@ export default Vue.extend({
     };
   },
 
-  computed: {
-    id() {
-      return Number(this.$route.params.id);
-    },
-  },
-
   async created() {
-    const articleHTML = await articleRepository.get(this.id);
+    const { slug } = this.$route.params;
+    const articleHTML = await articleRepository.get(slug);
     this.articleParser = new ArticleParser(articleHTML);
 
     this.$nextTick(() => {

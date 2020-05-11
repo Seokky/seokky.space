@@ -15,7 +15,7 @@ const router = new VueRouter({
 
 router.beforeEach(async (to, from, next) => {
   if (to.name === 'Article') {
-    const articleHTML = await articleRepository.get(to.params.id);
+    const articleHTML = await articleRepository.get(to.params.slug);
 
     if (!articleHTML) {
       next({ name: '404' });

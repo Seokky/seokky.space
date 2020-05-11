@@ -1,4 +1,6 @@
 import ArticleParser from '@/classes/ArticleParser';
+import { idsBySlug, slugsById } from '@/articles/slugs';
+import { ArticleMetaExtended } from '@/types/ArticleMetaExtended';
 
 const articles = {
   1: import('@/articles/article1.md'),
@@ -6,22 +8,26 @@ const articles = {
   3: import('@/articles/article3.md'),
 } as { [name: number]: Promise<any> };
 
-async function get(name: number | string) {
-  const article = await articles[name as number];
+async function get(slug: string) {
+  const id = idsBySlug[slug];
+  const article = await articles[id];
+
   return article?.default;
 }
 
-async function getAll() {
-  const names = Object.keys(articles);
+async function getAll(): Promise<ArticleMetaExtended[]> {
+  const ids = Object.keys(articles);
 
   return Promise.all(
-    names.map(async (name: string) => {
-      const article = await get(name);
+    ids.map(async (id: string) => {
+      const slug = slugsById[+id];
+      const article = await get(slug);
       const articleParser = new ArticleParser(article);
 
       return {
         ...articleParser.getMeta(),
-        id: name,
+        id,
+        slug,
       };
     }),
   );

@@ -14,7 +14,6 @@
       class="navigation__item"
       active-class="navigation__item--active"
       title="Мой типа-блог"
-      exact
       :to="{ name: 'Blog' }"
     >
       Блог

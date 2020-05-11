@@ -12,6 +12,11 @@ export default [
     },
   },
   {
+    path: '/blog/:slug',
+    name: 'Article',
+    component: () => import(/* webpackChunkName: "article" */ '@/views/Article.vue'),
+  },
+  {
     path: '/blog',
     name: 'Blog',
     component: () => import(/* webpackChunkName: "blog" */ '@/views/Blog.vue'),
@@ -19,11 +24,6 @@ export default [
       title: 'Блог | Seokky',
       description: 'Здесь я делюсь интересным на мой взгляд опытом преимущественно в рамках фронтенда. Данный блог не позиционируется в качестве средства массовой информации и источника достоверных данных.',
     },
-  },
-  {
-    path: '/articles/:id',
-    name: 'Article',
-    component: () => import(/* webpackChunkName: "article" */ '@/views/Article.vue'),
   },
   {
     path: '/not-found',

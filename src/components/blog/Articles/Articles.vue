@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { ArticleMetaWithId } from '@/types/ArticleMetaWithId';
+import { ArticleMetaExtended } from '@/types/ArticleMetaExtended';
 import articleRepository from '@/repository/articleRepository';
 import ArticlePreview from './Preview.vue';
 
@@ -20,7 +20,7 @@ export default Vue.extend({
   },
 
   data: () => ({
-    articles: [] as ArticleMetaWithId[],
+    articles: [] as ArticleMetaExtended[],
   }),
 
   async beforeMount() {

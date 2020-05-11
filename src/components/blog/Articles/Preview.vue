@@ -18,7 +18,7 @@
     <div class="article-preview__action-wrapper">
       <router-link
         class="article-preview__action-link"
-        :to="{ name: 'Article', params: { id: props.data.id } }"
+        :to="{ name: 'Article', params: { slug: props.data.slug } }"
       >
         Читать
       </router-link>
@@ -28,12 +28,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { ArticleMetaWithId } from '@/types/ArticleMetaWithId';
+import { ArticleMetaExtended } from '@/types/ArticleMetaExtended';
 
 export default Vue.extend({
   props: {
     data: {
-      type: Object as () => ArticleMetaWithId,
+      type: Object as () => ArticleMetaExtended,
       required: true,
     },
   },
