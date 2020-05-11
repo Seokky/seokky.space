@@ -18,6 +18,7 @@
     <div class="article-preview__action-wrapper">
       <router-link
         class="article-preview__action-link"
+        title="Перейти к статье"
         :to="{ name: 'Article', params: { slug: props.data.slug } }"
       >
         Читать
