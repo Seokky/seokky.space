@@ -1,11 +1,7 @@
 import slugs from './slugs.json';
 
-export const slugsById = slugs as {
-  [id: number]: string;
-};
-export const idsBySlug = {} as {
-  [slug: string]: number;
-};
+export const slugsById = slugs as { [id: number]: string };
+export const idsBySlug = {} as { [slug: string]: number };
 
 /* filling idsBySlug object */
 const ids = Object.keys(slugsById);

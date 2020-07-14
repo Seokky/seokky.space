@@ -24,13 +24,7 @@ export default Vue.extend({
   }),
 
   async beforeMount() {
-    this.articles = await this.getArticles();
-  },
-
-  methods: {
-    getArticles() {
-      return articleRepository.getAll();
-    },
+    this.articles = await articleRepository.getAll();
   },
 });
 </script>

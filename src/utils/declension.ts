@@ -2,7 +2,6 @@ export default function getDeclension(
   num: number, one: string, two: string, five: string,
 ) {
   let n = Math.abs(num);
-
   n %= 100;
 
   if (n >= 5 && n <= 20) return five;

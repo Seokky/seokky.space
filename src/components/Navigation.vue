@@ -27,11 +27,11 @@
     >
       <picture>
         <source
-          :srcset="githubLogoWebp"
+          srcset="@/assets/img/github.webp"
           type="image/webp"
         >
         <img
-          :src="githubLogoPng"
+          src="@/assets/img/github.png"
           alt="GitHub logo"
         >
       </picture>
@@ -39,19 +39,6 @@
     </a>
   </nav>
 </template>
-
-<script lang="ts">
-import Vue from 'vue';
-import githubLogoWebp from '@/assets/img/github.webp';
-import githubLogoPng from '@/assets/img/github.png';
-
-export default Vue.extend({
-  data: () => ({
-    githubLogoWebp,
-    githubLogoPng,
-  }),
-});
-</script>
 
 <style lang="scss" scoped>
 @import '@/styles/vars.scss';

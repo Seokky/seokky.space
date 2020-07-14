@@ -13,10 +13,11 @@ export default class ArticleParser {
   }
 
   getMeta() {
-    const header = this.getHeader();
-    const metaItems = header
-      .match(/<\w+>([А-Яа-я]|\s|\w|\d|\.|-|—)+<\/\w+>/g)
-      ?.map((item: any) => item.match(/([А-Яа-я]|\s|\w|\d|\.|-|—)+/g)[1]);
+    const metaItemRegex = /<\w+>([А-Яа-я]|\s|\w|\d|\.|-|—)+<\/\w+>/g;
+    const metaItemTextRegex = /([А-Яа-я]|\s|\w|\d|\.|-|—)+/g;
+    const metaItems = this.getHeader()
+      .match(metaItemRegex) // pure meta items
+      ?.map((item: any) => item.match(metaItemTextRegex)[1]); // meta items text only
 
     if (!metaItems || metaItems.length !== 4) {
       throw new Error('Invalid article header');
@@ -25,7 +26,10 @@ export default class ArticleParser {
     const [title, description, date, author] = metaItems;
 
     return {
-      title, description, date, author,
+      title,
+      description,
+      date,
+      author,
     };
   }
 
@@ -35,9 +39,8 @@ export default class ArticleParser {
 
   /* eslint-disable class-methods-use-this */
   getImages() {
-    return Array.from(
-      document.getElementsByClassName('article__image'),
-    ) as HTMLElement[];
+    const images = document.getElementsByClassName('article__image');
+    return Array.from(images) as HTMLElement[];
   }
   /* eslint-enable class-methods-use-this */
 }

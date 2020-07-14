@@ -32,8 +32,7 @@ export default Vue.extend({
     const parent = el.parentNode!;
     const sibling = el.nextSibling;
 
-    // Wrap the element (is automatically removed from its current
-    // parent).
+    // Wrap the element (is automatically removed from its current parent).
     child.appendChild(el);
 
     // If the element had a sibling, insert the wrapper before
