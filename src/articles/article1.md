@@ -1,7 +1,7 @@
 <header>
   <title>Как Python фронтендеру в быту пригодился</title>
   <description>Как Python фронтендеру в быту пригодился</description>
-  <date>24.02.2020</date>
+  <date>15.06.2020</date>
   <author>Максим Новерин</author>
 </header>
 
