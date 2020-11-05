@@ -193,7 +193,6 @@ $lines-color: rgba(gray, 0.25);
       margin-top: 1.5em;
     }
 
-
     .skills__item:nth-of-type(2):before {
       content: '';
       display: block;

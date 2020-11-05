@@ -92,7 +92,7 @@ export default Vue.extend({
     }
 
     &:last-of-type {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
   }
 
@@ -100,7 +100,7 @@ export default Vue.extend({
     font-size: 19px;
     font-weight: bold;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
     @media screen and (min-width: 768px) {
       font-size: 22px;
