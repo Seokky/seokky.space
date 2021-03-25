@@ -26,6 +26,18 @@
       <li class="few-words__item">
         Облачное видеонаблюдение с распознаванием лиц
       </li>
+      <li class="few-words__item">
+        Таинственный проект топ-3 хостинга Рунета - Timeweb
+      </li>
+      <li class="few-words__item">
+        Внутренние проекты МТС
+      </li>
+      <li class="few-words__item">
+        Плагин для Vue: <a
+          href="https://www.npmjs.com/package/vue-pincode-input"
+          target="_blank"
+        >vue-pincode-input</a>
+      </li>
     </ul>
   </section>
 </template>
