@@ -27,7 +27,7 @@ router.beforeEach(async (to, from, next) => {
 
     routerUtils.setPageTitle(meta.title);
     routerUtils.setPageDescription(meta.description);
-  } else {
+  } else if (to?.meta) {
     routerUtils.setPageTitle(to.meta.title);
     routerUtils.setPageDescription(to.meta.description);
   }

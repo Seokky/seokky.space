@@ -19,6 +19,7 @@
 @import '@/styles/vars.scss';
 
 .banner {
+  margin-top: 40px;
   margin-bottom: 50px;
 
   @media screen and (min-width: 768px) {

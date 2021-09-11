@@ -48,7 +48,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 
   @media screen and (min-width: 500px) {
     justify-content: flex-end;

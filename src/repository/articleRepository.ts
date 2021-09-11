@@ -4,7 +4,7 @@ import { ArticleMetaExtended } from '@/types/ArticleMetaExtended';
 
 const articles = {
   1: import('@/articles/article1.md'),
-  // 2: import('@/articles/article2.md'),
+  2: import('@/articles/article2.md'),
   // 3: import('@/articles/article3.md'),
 } as { [name: number]: Promise<any> };
 
