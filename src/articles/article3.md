@@ -2,7 +2,7 @@
   <title>Serverless — когда лень писать бэкенд</title>
   <description>Описание первой статьи</description>
   <date>24.02.2020</date>
-  <author>Максим Новерин</author>
+  <author>Максим Новерин </author>
 </header>
 
 ## Первый подзаголовок статьи
