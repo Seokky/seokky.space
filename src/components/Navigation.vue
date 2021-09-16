@@ -22,6 +22,44 @@
     <a
       class="navigation__item"
       target="_blank"
+      href="https://medium.com/@seokky"
+      title="Medium"
+    >
+      <picture>
+        <source
+          srcset="@/assets/img/medium.webp"
+          type="image/webp"
+        >
+        <img
+          src="@/assets/img/medium.png"
+          alt="Medium logo"
+        >
+      </picture>
+      Medium
+    </a>
+
+    <a
+      class="navigation__item"
+      target="_blank"
+      href="https://habr.com/ru/users/SeokkySss/posts/"
+      title="Habr"
+    >
+      <picture>
+        <source
+          srcset="@/assets/img/habr.webp"
+          type="image/webp"
+        >
+        <img
+          src="@/assets/img/habr.png"
+          alt="Habr logo"
+        >
+      </picture>
+      Habr
+    </a>
+
+    <a
+      class="navigation__item"
+      target="_blank"
       href="https://github.com/Seokky"
       title="GitHub профиль"
     >
@@ -72,17 +110,31 @@
       text-decoration: underline;
     }
 
-    &:nth-of-type(2) {
-      margin: 0 15px;
-    }
-
     &--active {
       font-weight: bold;
     }
 
     img {
+      display: none;
       margin-right: 4px;
       height: 20px;
+      border-radius: 50%;
+
+      @media screen and (min-width: 550px) {
+        display: block;
+      }
+    }
+
+    & + * {
+      margin-left: 10px;
+
+      @media screen and (min-width: 550px) {
+        margin-left: 15px;
+      }
+
+      @media screen and (min-width: 1100px) {
+        margin-left: 25px;
+      }
     }
   }
 }
