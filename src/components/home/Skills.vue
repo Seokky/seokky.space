@@ -20,13 +20,13 @@
 
       <div class="skills__column">
         <div class="skills__item">
-          Prerender
+          React.js
         </div>
       </div>
 
       <div class="skills__column">
         <div class="skills__item">
-          Vuex
+          Flux
         </div>
       </div>
     </div>
@@ -57,6 +57,12 @@
           SASS(SCSS)
         </div>
       </div>
+
+      <div class="skills__column">
+        <div class="skills__item">
+          CSS Modules
+        </div>
+      </div>
     </div>
 
     <div class="skills__other">
@@ -67,10 +73,16 @@
         Design Patterns
       </div>
       <div class="skills__item">
+        Prerender
+      </div>
+      <div class="skills__item">
         ООП
       </div>
       <div class="skills__item">
         Unit Tests
+      </div>
+      <div class="skills__item">
+        Webpack
       </div>
       <div class="skills__item">
         Git
