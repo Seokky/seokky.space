@@ -40,7 +40,7 @@
 
       <div class="skills__column">
         <div class="skills__item">
-          Pug
+          JSX
         </div>
       </div>
     </div>
@@ -67,10 +67,10 @@
 
     <div class="skills__other">
       <div class="skills__item">
-        SOLID
+        Webpack
       </div>
       <div class="skills__item">
-        Design Patterns
+        Ethereum
       </div>
       <div class="skills__item">
         Prerender
@@ -82,16 +82,10 @@
         Unit Tests
       </div>
       <div class="skills__item">
-        Webpack
+        SOLID
       </div>
       <div class="skills__item">
-        Git
-      </div>
-      <div class="skills__item">
-        Ethereum
-      </div>
-      <div class="skills__item">
-        i18n
+        Design Patterns
       </div>
     </div>
   </section>

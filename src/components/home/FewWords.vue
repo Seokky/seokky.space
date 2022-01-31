@@ -6,10 +6,11 @@
       Увлеченный фронтендер (по выходным ещё и бэкендер).
     </p>
     <p class="few-words__paragraph">
-      Люблю работать над интересными, значимыми проектами.
+      Умею писать код так, чтобы его не пришлось переписывать.
     </p>
     <p class="few-words__paragraph">
-      Служитель культа "Совершенного кода" С. Макконнелла и airbnb.
+      Изучаю алгоритмы, углубленный JavaScript, соблюдаю SOLID <br>
+      и настраиваю webpack под любые нужды :)
     </p>
 
     <span class="few-words__list-title">
@@ -18,13 +19,25 @@
 
     <ul class="few-words__list">
       <li class="few-words__item">
-        Портал персонифицированного доп. образования
+        Портал персонифицированного доп. образования:
+        <a
+          href="https://pfdo.ru/"
+          target="_blank"
+        >ПФДО</a>
       </li>
       <li class="few-words__item">
-        Ethereum лото
+        Ethereum Blockchain лото:
+        <a
+          href="https://ethex.bet"
+          target="_blank"
+        >ethex.bet</a>
       </li>
       <li class="few-words__item">
-        Облачное видеонаблюдение с распознаванием лиц
+        Облачное видеонаблюдение с распознаванием лиц:
+        <a
+          href="https://faceter.cam/en"
+          target="_blank"
+        >faceter.cam</a>
       </li>
       <li class="few-words__item">
         Таинственный проект топ-3 хостинга Рунета - Timeweb
@@ -33,20 +46,19 @@
         Внутренние проекты МТС
       </li>
       <li class="few-words__item">
-        Плагин для Vue:
+        Open Source плагин для Vue 2:
         <a
           href="https://www.npmjs.com/package/vue-pincode-input"
           target="_blank"
         >vue-pincode-input</a>
       </li>
       <li class="few-words__item">
-        Нотный тренер (веб-приложение):
+        Нотный тренер (React + Redux):
         <a
           href="https://play-this-note.ru"
           target="_blank"
         >Play This Note</a>
       </li>
-
     </ul>
   </section>
 </template>
@@ -101,7 +113,7 @@ export default Vue.extend({
 
   &__paragraph {
     font-size: 19px;
-    line-height: 120%;
+    line-height: 130%;
     margin: 10px 0;
 
     @media screen and (min-width: 768px) {
@@ -155,7 +167,7 @@ export default Vue.extend({
       margin-bottom: 7px;
 
       @media screen and (min-width: 768px) {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
     }
   }

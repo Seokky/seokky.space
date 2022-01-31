@@ -17,7 +17,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     'vue/no-v-html': 'off',
-    'func-names': 'off'
+    'func-names': 'off',
   },
   overrides: [
     {

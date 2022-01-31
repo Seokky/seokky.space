@@ -19,7 +19,7 @@
       </li>
       <li class="about__item">
         <span class="about__label"><strike>ЧСВ</strike> Позиция:</span>
-        <span class="about__value">Middle</span>
+        <span class="about__value">Middle+</span>
       </li>
       <li class="about__item">
         <span class="about__label">Настроение:</span>
